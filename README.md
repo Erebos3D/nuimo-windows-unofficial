@@ -1,12 +1,11 @@
 # nuimo-windows-unofficial
 
-Unofficial support for Nuimo from Senic for Windows 10.
-Learn more about Nuimo and Senic [here](https://www.senic.com/)
+Unofficial support for Nuimo from Senic for Windows 10.<br/>
+Learn more about Nuimo and Senic [here](https://www.senic.com/).<br/>
 I didn't want to wait for Senic to support Windows, they aim at July 2016.
 So here is an early solution I wrote myself.
 
-## Disclaimer
-Limitations:
+## Limitations:
  - It runs only on Windows 10 (older versions not supported)
  - It can be included only in Windows Universal Apps written in C#
  - Native Windows support for Bluetooth Low Energy (BLE) is limited, the user has to pair with Nuimo via the Windows system before.
