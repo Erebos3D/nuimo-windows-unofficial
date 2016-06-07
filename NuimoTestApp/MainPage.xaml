@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="NuimoDemoApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NuimoDemoApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel x:Name="contentPanel" Margin="8,32,0,0">
+            <TextBlock Text="Nuimo Controller Demonstration" Margin="0,0,0,0" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text="Copyright 2016 Jakob Foos" Margin="0,0,0,40"/>
+            <Button x:Name="startButton" Content="Start Nuimo" Click="StartButton_Click"/>
+            <TextBlock x:Name="greetingOutput"/>
+            <TextBlock x:Name="batteryOutput"/>
+            <Button x:Name="displayButton" Content="Display Something" Click="DisplayButton_Click" Margin="0, 40, 0, 0"/>
+            <TextBlock x:Name="buttonOutput">Button state: 0</TextBlock>
+            <TextBlock x:Name="rotOutput">Angle: 0</TextBlock>
+            <TextBlock x:Name="swipeOutput"></TextBlock>
+        </StackPanel>
+
+    </Grid>
+</Page>
