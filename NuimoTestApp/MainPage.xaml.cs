@@ -49,7 +49,7 @@ namespace NuimoDemoApp
     {
         public Nuimo nuimo;
         public int angle = 0;
-        public string[] swipes = { "left", "right", "up", "down", "close/far" };
+        public string[] swipes = { "left", "right", "up", "down" };
 
         public string symbol1 = ("******** " +
                                  "*********" +
@@ -203,7 +203,14 @@ namespace NuimoDemoApp
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 swipeTimer.Stop();
-                swipeOutput.Text = "Fly " + swipes[direction] + " (Speed " + speed + ").";
+                if (direction == 4) // Means close/far
+                {
+                    swipeOutput.Text = "Hover distance: " + speed;
+                }
+                else
+                {
+                    swipeOutput.Text = "Fly " + swipes[direction] + " (Speed " + speed + ").";
+                }
                 swipeTimer.Start();
             });
         }

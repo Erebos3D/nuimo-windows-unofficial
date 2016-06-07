@@ -1,8 +1,9 @@
 # nuimo-windows-unofficial
 
 Unofficial support for Nuimo from Senic for Windows 10.
+Learn more about Nuimo and Senic [here](https://www.senic.com/)
 I didn't want to wait for Senic to support Windows, they aim at July 2016.
-So here is a early solution I wrote myself.
+So here is an early solution I wrote myself.
 
 ## Disclaimer
 Limitations:
@@ -18,7 +19,7 @@ Next to the Nuimo Controller there is a Demo, which is tested to work on Windows
 It can be used to toy around with the controller and is not very complex.
 
 ## How to include the Nuimo Controller
-You can simply include the DLL from the Nuimo Controller in your Universal App. As far as I know, it will only work with apps written in C#. Distinguish between the Release and the Debug version of the DLL. The latter includes more debug output. If you are going to build the DLL yourself anyway, you could also include the whole Nuimo Controller project.
+You can simply include the DLL from the Nuimo Controller in your Universal App. As far as I know, it will only work with apps written in C#. Distinguish between the Release and the Debug version of the DLL. The latter includes more debug output. You need to build the DLL yourself anyway (for now), so you could also include the whole Nuimo Controller project.
 Then, most important, add the Bluetooth capability in your Package.appxmanifest.
 The rest is simple code:
 ```csharp
