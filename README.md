@@ -8,7 +8,7 @@ So here is an early solution I wrote myself.
 ## Limitations:
  - It runs only on Windows 10 (older versions not supported)
  - It can be included only in Windows Universal Apps written in C#
- - Native Windows support for Bluetooth Low Energy (BLE) is limited, the user has to pair with Nuimo via the Windows system before.
+ - Native Windows support for Bluetooth Low Energy (BLE) is limited, **the user has to pair with Nuimo via the Windows system before**.
  - Over time the connection may grow instable
  - My C# and Windows programming skill are limited, there might be unexpected code
  - This is probably not a final version
