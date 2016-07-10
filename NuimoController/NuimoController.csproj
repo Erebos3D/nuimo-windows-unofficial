@@ -107,6 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ButtonAction.cs" />
+    <Compile Include="Enums\FlyDirection.cs" />
+    <Compile Include="Enums\SwipeDirection.cs" />
     <Compile Include="Nuimo.cs" />
     <Compile Include="NuimoDelegate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

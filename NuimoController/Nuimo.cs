@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Windows.Devices.Bluetooth;
@@ -73,7 +71,7 @@ namespace NuimoController
         private Guid LedMatrixCharGuid = new Guid("f29b1524-cb19-40f3-be5c-7241ecb82fd1");
 
         // In order like enum Characteristic
-        private GattCharacteristic[] SensorsCharacteristics = new GattCharacteristic[5]; 
+        private GattCharacteristic[] SensorsCharacteristics = new GattCharacteristic[5];
         private Dictionary<GattCharacteristic, Sensor> SensorMap = new Dictionary<GattCharacteristic, Sensor>();
 
         private GattCharacteristic Display;
@@ -140,7 +138,7 @@ namespace NuimoController
             // the correct device from them. 
             var devices = await DeviceInformation.FindAllAsync(GattDeviceService.GetDeviceSelectorFromUuid(BatteryServiceGuid), null);
 
-            Debug.WriteLine("Found " + devices.Count + " device(s) with battery status." );
+            Debug.WriteLine("Found " + devices.Count + " device(s) with battery status.");
             Debug.WriteLine("Looking for device with " + message + ".");
 
             foreach (var batteryDevice in devices)
@@ -208,7 +206,7 @@ namespace NuimoController
             var gattResult = await SensorsCharacteristics[0].ReadValueAsync();
             BatteryLevel = DataReader.FromBuffer(gattResult.Value).ReadByte();
 
-            for (var i=0; i<5; i++)
+            for (var i = 0; i < 5; i++)
             {
                 var characteristic = SensorsCharacteristics[i];
                 characteristic.ValueChanged += BluetoothCallback;
@@ -250,7 +248,7 @@ namespace NuimoController
 
         public async void Restart()
         {
-            if (! Initialised)
+            if (!Initialised)
             {
                 await this.Init();
                 return;
@@ -301,12 +299,12 @@ namespace NuimoController
 
             // Probably not the simplest way to compute the bytes
             byte[] data = new byte[13];
-            for(var i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 int b = 0;
                 for (var j = 0; j < 8; j++)
                 {
-                    if (value[i*8+j] != ' ' && value[i*8+j] != '0')
+                    if (value[i * 8 + j] != ' ' && value[i * 8 + j] != '0')
                     {
                         b += 1 << j;
                     }
@@ -354,11 +352,11 @@ namespace NuimoController
 
             if (sensor == Nuimo.Sensor.Button)
             {
-                Delegate.OnButton(this, bytes[0]);
+                Delegate.OnButton(this, (ButtonAction)bytes[0]);
             }
             else if (sensor == Nuimo.Sensor.Swipe)
             {
-                Delegate.OnSwipe(this, bytes[0]);
+                Delegate.OnSwipe(this, (SwipeDirection)bytes[0]);
             }
             else if (sensor == Nuimo.Sensor.Battery)
             {
@@ -372,7 +370,7 @@ namespace NuimoController
             }
             else if (sensor == Nuimo.Sensor.Fly)
             {
-                Delegate.OnFly(this, bytes[0], bytes[1]);
+                Delegate.OnFly(this, (FlyDirection)bytes[0], bytes[1]);
             }
 
 
