@@ -86,7 +86,8 @@ namespace NuimoDemoApp
         public MainPage()
         {
             // If no Id is supplied, it will search for a Bluetooth device called nuimo.Name (default is 'Nuimo', but you can change that).
-            nuimo = new Nuimo("d3b48a8b91ac");
+            nuimo = new Nuimo();
+            //nuimo = new Nuimo("d3b48a8b91ac");
             // e.g
             // nuimo.Name = "MyNewNuimoName";
             // Sadly, different Nuimo names are AFAIK not supported yet on the hardware.
