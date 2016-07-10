@@ -49,7 +49,6 @@ namespace NuimoDemoApp
     {
         public Nuimo nuimo;
         public int angle = 0;
-        public string[] swipes = { "left", "right", "up", "down" };
 
         public string symbol1 = ("******** " +
                                  "*********" +
@@ -163,7 +162,7 @@ namespace NuimoDemoApp
 
         // -------------- INuimoDelegate Methods ---------------------------//
 
-        public async void OnBattery(Nuimo nuimo, byte level)
+        public async void OnBattery(Nuimo nuimo, short level)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
@@ -171,7 +170,7 @@ namespace NuimoDemoApp
             });
         }
 
-        public async void OnButton(Nuimo nuimo, byte state)
+        public async void OnButton(Nuimo nuimo, ButtonAction state)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
@@ -188,28 +187,28 @@ namespace NuimoDemoApp
             });
         }
 
-        public async void OnSwipe(Nuimo nuimo, byte direction)
+        public async void OnSwipe(Nuimo nuimo, SwipeDirection direction)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 swipeTimer.Stop();
-                swipeOutput.Text = "Swipe " + swipes[direction];
+                swipeOutput.Text = "Swipe " + direction.ToString();
                 swipeTimer.Start();
             });
         }
 
-        public async void OnFly(Nuimo nuimo, byte direction, byte speed)
+        public async void OnFly(Nuimo nuimo, FlyDirection direction, short distance)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 swipeTimer.Stop();
-                if (direction == 4) // Means close/far
+                if (direction == FlyDirection.UpDown) // Means close/far
                 {
-                    swipeOutput.Text = "Hover distance: " + speed;
+                    swipeOutput.Text = "Hover distance: " + distance;
                 }
                 else
                 {
-                    swipeOutput.Text = "Fly " + swipes[direction] + " (Speed " + speed + ").";
+                    swipeOutput.Text = "Fly " + direction.ToString();
                 }
                 swipeTimer.Start();
             });
